@@ -1,0 +1,18 @@
+{
+  "name": "definicao-servicos",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": "git@github.com:open-beauty-ce/definicao-servicos.git",
+  "author": "Pedro Marcelo <pedromarcelodesaalves@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "@types/bson": "^4.0.2"
+  }
+}

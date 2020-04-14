@@ -1,0 +1,121 @@
+syntax = "proto3";
+
+import "google/protobuf/any.proto";
+
+package agenda;
+
+message Doutor {
+    string id = 1;
+    string nome = 2;
+}
+
+message Procedimento {
+    string id = 1;
+    string nome = 2;
+    int32 duracao = 3;
+    Doutor doutor = 4;
+}
+
+message Horario {
+    string id = 1;
+    repeated Encontro encontros = 2;
+    string procedimentoId = 3;
+    Doutor doutor = 4;
+}
+
+message Encontro {
+    string id = 1;
+    int64 data = 2;
+    bool realizado = 3;
+}
+
+message Horarios {
+    repeated Horario itens = 1;
+    int32 total = 2;
+    int32 pagina = 3;
+    int32 paginas = 4;
+}
+
+message Procedimentos {
+    repeated Procedimento itens = 1;
+    int32 total = 2;
+    int32 pagina = 3;
+    int32 paginas = 4;
+}
+
+message MarcarHorarioInput {
+    string procedimentoId = 1;
+    repeated int64 datas = 2;
+    Doutor doutor = 3;
+}
+
+message FiltroPeloIdInput {
+    string id = 1;
+}
+
+message PaginacaoInput {
+    int32 limite = 1;
+    int32 pagina = 2;
+}
+
+message CondicaoInput {
+    string eq = 1;
+    string regexp = 2;
+    google.protobuf.Any gt = 3;
+    google.protobuf.Any gte = 4;
+    google.protobuf.Any lt = 5;
+    google.protobuf.Any lte = 6;
+}
+
+enum OrdemInput {
+    NONE = 0;
+    ASC = 1;
+    DESC = -1;
+}
+
+message FiltroHorariosInput {
+    message FiltroInput {
+        CondicaoInput id = 1;
+        CondicaoInput data = 2;
+        CondicaoInput procedimentoId = 3;
+        CondicaoInput doutor = 4;
+    }
+
+    message OrdenacaoInput {
+        OrdemInput id = 1;
+        OrdemInput data = 2;
+    }
+
+    FiltroInput filtro = 1;
+    OrdenacaoInput ordenacao = 2;
+    PaginacaoInput paginacao = 3;
+}
+
+message FiltroProcedimentosInput {
+    message FiltroInput {
+        CondicaoInput id = 1;
+        CondicaoInput nome = 2;
+        CondicaoInput duracao = 3;
+        CondicaoInput doutor = 4;
+    }
+
+    message OrdenacaoInput {
+        OrdemInput id = 1;
+        OrdemInput nome = 2;
+        OrdemInput duracao = 3;
+    }
+
+    FiltroInput filtro = 1;
+    OrdenacaoInput ordenacao = 2;
+    PaginacaoInput paginacao = 3;
+}
+
+service HorarioController {
+    rpc marcarHorario(MarcarHorarioInput) returns (Horario);
+
+    rpc pegarHorario(FiltroPeloIdInput) returns (Horario);
+    rpc pegarProcedimento(FiltroPeloIdInput) returns (Procedimento);
+
+    rpc listarHorarios(FiltroHorariosInput) returns (Horarios);
+    rpc listarProcedimentos(FiltroProcedimentosInput) returns (Procedimentos);
+}
