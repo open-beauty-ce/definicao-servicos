@@ -63,4 +63,22 @@ export namespace Agenda {
 
   }
 
+  export namespace Controller {
+
+    export interface Horario {
+
+      marcarHorario(dados: Agenda.Input.MarcarHorario): Promise<Agenda.Horario>;
+
+      pegarHorario(filtro: Common.Input.FiltroPeloId): Promise<Agenda.Horario>;
+
+      pegarProcedimento(filtro: Common.Input.FiltroPeloId): Promise<Agenda.Procedimento>;
+
+      listarHorarios(filtro: Agenda.Input.FiltroHorarios): Promise<Agenda.Horarios>;
+
+      listarProcedimentos(filtro: Agenda.Input.FiltroProcedimentos): Promise<Agenda.Procedimentos>;
+
+    }
+
+  }
+
 }
