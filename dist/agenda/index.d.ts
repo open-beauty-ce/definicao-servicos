@@ -34,7 +34,10 @@ export declare namespace Agenda {
             id: Common.Input.Condicoes;
             data: Common.Input.Condicoes;
             procedimentoId: Common.Input.Condicoes;
-            doutor: Common.Input.Condicoes;
+            doutor: {
+                id: Common.Input.Condicoes;
+                nome: Common.Input.Condicoes;
+            };
         }>, Partial<{
             id: Common.Input.Ordem;
             data: Common.Input.Ordem;
@@ -43,7 +46,10 @@ export declare namespace Agenda {
             id: Common.Input.Condicoes;
             nome: Common.Input.Condicoes;
             duracao: Common.Input.Condicoes;
-            doutor: Common.Input.Condicoes;
+            doutor: {
+                id: Common.Input.Condicoes;
+                nome: Common.Input.Condicoes;
+            };
         }>, Partial<{
             id: Common.Input.Ordem;
             nome: Common.Input.Ordem;
