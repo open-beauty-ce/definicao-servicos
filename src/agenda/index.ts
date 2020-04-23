@@ -40,6 +40,12 @@ export namespace Agenda {
       doutor: Doutor;
     }
 
+    export interface CriarProcedimento {
+      nome: string;
+      duracao: number;
+      doutor: Doutor;
+    }
+
     export type FiltroHorarios = Common.Input.Filtro<Partial<{
       id: Common.Input.Condicoes;
       data: Common.Input.Condicoes;
@@ -77,9 +83,19 @@ export namespace Agenda {
 
       pegarHorario(filtro: Common.Input.FiltroPeloId): Promise<Agenda.Horario>;
 
-      pegarProcedimento(filtro: Common.Input.FiltroPeloId): Promise<Agenda.Procedimento>;
+      excluirHorario(filtro: Common.Input.FiltroPeloId): Promise<Common.SituacaoExclusao>;
 
       listarHorarios(filtro: Agenda.Input.FiltroHorarios): Promise<Agenda.Horarios>;
+
+    }
+
+    export interface Procedimento {
+
+      criarProcedimento(dados: Agenda.Input.CriarProcedimento): Promise<Agenda.Procedimento>;
+
+      pegarProcedimento(filtro: Common.Input.FiltroPeloId): Promise<Agenda.Procedimento>;
+
+      excluirProcedimento(filtro: Common.Input.FiltroPeloId): Promise<Common.SituacaoExclusao>;
 
       listarProcedimentos(filtro: Agenda.Input.FiltroProcedimentos): Promise<Agenda.Procedimentos>;
 

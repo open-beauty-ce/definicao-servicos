@@ -6,15 +6,11 @@ export declare namespace Common {
         total: number;
         itens: T[];
     }
+    interface SituacaoExclusao {
+        sucesso: boolean;
+    }
     namespace Input {
-        type Condicoes = Partial<{
-            eq: string;
-            regexp: string;
-            gt: any;
-            gte: any;
-            lt: any;
-            lte: any;
-        }>;
+        type Condicoes = any;
         interface Paginacao {
             limite?: number;
             pagina?: number;

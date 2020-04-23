@@ -49,22 +49,23 @@ message MarcarHorarioInput {
     Doutor doutor = 3;
 }
 
+message CriarProcedimentoInput {
+    string nome = 1;
+    int32 duracao = 2;
+    Doutor doutor = 3;
+}
+
 message FiltroPeloIdInput {
     string id = 1;
+}
+
+message SituacaoExclusao {
+    bool sucesso = 1;
 }
 
 message PaginacaoInput {
     int32 limite = 1;
     int32 pagina = 2;
-}
-
-message CondicaoInput {
-    string eq = 1;
-    string regexp = 2;
-    google.protobuf.Any gt = 3;
-    google.protobuf.Any gte = 4;
-    google.protobuf.Any lt = 5;
-    google.protobuf.Any lte = 6;
 }
 
 enum OrdemInput {
@@ -75,10 +76,10 @@ enum OrdemInput {
 
 message FiltroHorariosInput {
     message FiltroInput {
-        CondicaoInput id = 1;
-        CondicaoInput data = 2;
-        CondicaoInput procedimentoId = 3;
-        CondicaoInput doutor = 4;
+        google.protobuf.Any id = 1;
+        google.protobuf.Any data = 2;
+        google.protobuf.Any procedimentoId = 3;
+        google.protobuf.Any doutor = 4;
     }
 
     message OrdenacaoInput {
@@ -93,10 +94,10 @@ message FiltroHorariosInput {
 
 message FiltroProcedimentosInput {
     message FiltroInput {
-        CondicaoInput id = 1;
-        CondicaoInput nome = 2;
-        CondicaoInput duracao = 3;
-        CondicaoInput doutor = 4;
+        google.protobuf.Any id = 1;
+        google.protobuf.Any nome = 2;
+        google.protobuf.Any duracao = 3;
+        google.protobuf.Any doutor = 4;
     }
 
     message OrdenacaoInput {
@@ -112,10 +113,14 @@ message FiltroProcedimentosInput {
 
 service HorarioController {
     rpc marcarHorario(MarcarHorarioInput) returns (Horario);
-
     rpc pegarHorario(FiltroPeloIdInput) returns (Horario);
-    rpc pegarProcedimento(FiltroPeloIdInput) returns (Procedimento);
-
+    rpc excluirHorario(FiltroPeloIdInput) returns (SituacaoExclusao);
     rpc listarHorarios(FiltroHorariosInput) returns (Horarios);
+}
+
+service ProcedimentoController {
+    rpc criarProcedimento(CriarProcedimentoInput) returns (Procedimento);
+    rpc excluirProcedimento(FiltroPeloIdInput) returns (SituacaoExclusao);
+    rpc pegarProcedimento(FiltroPeloIdInput) returns (Procedimento);
     rpc listarProcedimentos(FiltroProcedimentosInput) returns (Procedimentos);
 }

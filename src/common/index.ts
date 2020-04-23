@@ -9,16 +9,13 @@ export namespace Common {
     itens: T[];
   }
 
+  export interface SituacaoExclusao {
+    sucesso: boolean;
+  }
+
   export namespace Input {
 
-    export type Condicoes = Partial<{
-      eq: string;
-      regexp: string;
-      gt: any;
-      gte: any;
-      lt: any;
-      lte: any;
-    }>;
+    export type Condicoes = any;
 
     export interface Paginacao {
       limite?: number;

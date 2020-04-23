@@ -1,6 +1,6 @@
 {
   "name": "definicao-servicos",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": "git@github.com:open-beauty-ce/definicao-servicos.git",
