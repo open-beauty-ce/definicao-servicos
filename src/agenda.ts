@@ -1,5 +1,5 @@
-import {ObjectID} from "../ObjectID";
-import {Common} from "../common";
+import {ObjectID} from "./ObjectID";
+import {Common} from "./common";
 
 export namespace Agenda {
 
