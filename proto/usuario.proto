@@ -1,0 +1,100 @@
+syntax = "proto3";
+
+import "google/protobuf/any.proto";
+
+package usuario;
+
+message Contato {
+  string telefone = 1;
+  bool whatsapp = 2;
+}
+
+message Usuario {
+  string id = 1;
+  string nome = 2;
+  string email = 3;
+  string funcao = 4;
+  repeated Contato contatos = 5;
+}
+
+message Usuarios {
+  repeated Usuario itens = 1;
+  int32 total = 2;
+  int32 pagina = 3;
+  int32 paginas = 4;
+}
+
+message PaginacaoInput {
+  int32 limite = 1;
+  int32 pagina = 2;
+}
+
+enum OrdemInput {
+  NONE = 0;
+  ASC = 1;
+  DESC = -1;
+}
+
+message SituacaoExclusao {
+  bool sucesso = 1;
+}
+
+message FiltroPeloIdInput {
+  string id = 1;
+}
+
+message FiltroUsuariosInput {
+  message FiltroInput {
+    google.protobuf.Any id = 1;
+    google.protobuf.Any nome = 2;
+    google.protobuf.Any email = 3;
+    google.protobuf.Any funcao = 4;
+    google.protobuf.Any contatos = 5;
+  }
+
+  message OrdenacaoInput {
+    OrdemInput id = 1;
+    OrdemInput nome = 2;
+    OrdemInput email = 3;
+    OrdemInput funcao = 4;
+  }
+
+  FiltroInput filtro = 1;
+  OrdenacaoInput ordenacao = 2;
+  PaginacaoInput paginacao = 3;
+}
+
+message DadosUsuarioInput {
+  string nome = 1;
+  string email = 2;
+  string senha = 3;
+  string funcao = 4;
+  repeated Contato contatos = 5;
+}
+
+message AtualizarUsuarioInput {
+  FiltroPeloIdInput filtro = 1;
+  DadosUsuarioInput dados = 2;
+}
+
+message AutenticacaoInput {
+  string email = 1;
+  string senha = 2;
+}
+
+message Token {
+  string token = 1;
+}
+
+service UsuarioController {
+  rpc criarUsuario(DadosUsuarioInput) returns(Usuario);
+  rpc atualizarUsuario(AtualizarUsuarioInput) returns(Usuario);
+  rpc pegarUsuario(FiltroPeloIdInput) returns(Usuario);
+  rpc listarUsuarios(FiltroUsuariosInput) returns(Usuarios);
+  rpc excluirUsuario(FiltroPeloIdInput) returns(SituacaoExclusao);
+}
+
+service AutenticacaoController {
+  rpc autenticar(AutenticacaoInput) returns(Token);
+  rpc usuarioAutenticado(Token) returns(Usuario);
+}
