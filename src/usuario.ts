@@ -3,6 +3,7 @@ import {Common} from "./common";
 export namespace Usuario {
 
   export interface Contato {
+    id: string;
     telefone: string;
     whatsapp: boolean;
   }

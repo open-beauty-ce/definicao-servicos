@@ -5,8 +5,9 @@ import "google/protobuf/any.proto";
 package usuario;
 
 message Contato {
-  string telefone = 1;
-  bool whatsapp = 2;
+  string id = 1;
+  string telefone = 2;
+  bool whatsapp = 3;
 }
 
 message Usuario {
