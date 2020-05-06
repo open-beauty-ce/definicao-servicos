@@ -42,6 +42,28 @@ export namespace Usuario {
       senha: string;
     }
 
+    export type FiltroUsuarios = Common.Input.Filtro<Partial<{
+      id: Common.Input.Condicoes,
+      nome: Common.Input.Condicoes,
+      email: Common.Input.Condicoes,
+      funcao: Common.Input.Condicoes,
+      contatos: {
+        id: Common.Input.Condicoes,
+        telefone: Common.Input.Condicoes,
+        whatsapp: Common.Input.Condicoes,
+      }
+    }>, Partial<{
+      id: Common.Input.Ordem,
+      nome: Common.Input.Ordem,
+      email: Common.Input.Ordem,
+      funcao: Common.Input.Ordem,
+      contatos: {
+        id: Common.Input.Ordem,
+        telefone: Common.Input.Ordem,
+        whatsapp: Common.Input.Ordem,
+      }
+    }>>
+
   }
 
   export namespace Controller {
@@ -54,7 +76,7 @@ export namespace Usuario {
 
       pegarUsuario(filtro: Common.Input.FiltroPeloId): Promise<Usuario.Usuario>;
 
-      listarUsuarios(FiltroUsuariosInput): Promise<Usuario.Usuarios>;
+      listarUsuarios(params: Usuario.Input.FiltroUsuarios): Promise<Usuario.Usuarios>;
 
       excluirUsuario(filtro: Common.Input.FiltroPeloId): Promise<Common.SituacaoExclusao>;
 
