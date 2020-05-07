@@ -29,12 +29,12 @@ export namespace Usuario {
       email: string;
       senha: string;
       funcao: string;
-      contatos: Contato[];
+      contatos: Omit<Contato, 'id'>[];
     }
 
     export interface AtualizarUsuario {
       filtro: Common.Input.FiltroPeloId;
-      dados: Partial<Usuario.Input.DadosUsuario>;
+      dados: Partial<Usuario.Input.DadosUsuario | { contatos: Contato[] }>;
     }
 
     export interface Autenticacao {

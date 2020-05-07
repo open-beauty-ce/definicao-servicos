@@ -65,12 +65,17 @@ message FiltroUsuariosInput {
   PaginacaoInput paginacao = 3;
 }
 
+message DadosContatoInput {
+  string telefone = 1;
+  bool whatsapp = 2;
+}
+
 message DadosUsuarioInput {
   string nome = 1;
   string email = 2;
   string senha = 3;
   string funcao = 4;
-  repeated Contato contatos = 5;
+  repeated DadosContatoInput contatos = 5;
 }
 
 message AtualizarUsuarioInput {
