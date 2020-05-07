@@ -24,11 +24,12 @@ export declare namespace Usuario {
             funcao: string;
             contatos: Omit<Contato, 'id'>[];
         }
+        type DadosAtualizarUsuario = Omit<Usuario.Input.DadosUsuario, 'contatos'> & {
+            contatos: Contato[];
+        };
         interface AtualizarUsuario {
             filtro: Common.Input.FiltroPeloId;
-            dados: Partial<Usuario.Input.DadosUsuario | {
-                contatos: Contato[];
-            }>;
+            dados: Partial<DadosAtualizarUsuario>;
         }
         interface Autenticacao {
             email: string;

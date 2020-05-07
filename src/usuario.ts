@@ -32,9 +32,11 @@ export namespace Usuario {
       contatos: Omit<Contato, 'id'>[];
     }
 
+    export type DadosAtualizarUsuario = Omit<Usuario.Input.DadosUsuario, 'contatos'> & { contatos: Contato[] }
+
     export interface AtualizarUsuario {
       filtro: Common.Input.FiltroPeloId;
-      dados: Partial<Usuario.Input.DadosUsuario | { contatos: Contato[] }>;
+      dados: Partial<DadosAtualizarUsuario>;
     }
 
     export interface Autenticacao {
