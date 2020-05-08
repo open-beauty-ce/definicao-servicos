@@ -1,6 +1,5 @@
 import { ObjectID } from "./ObjectID";
 import { Common } from "./common";
-import { Observable } from "rxjs";
 export declare namespace Agenda {
     interface Doutor {
         id: ObjectID;
@@ -64,16 +63,16 @@ export declare namespace Agenda {
     }
     namespace Controller {
         interface Horario {
-            marcarHorario(dados: Agenda.Input.MarcarHorario): Promise<Agenda.Horario> | Observable<Agenda.Horario>;
-            pegarHorario(filtro: Common.Input.FiltroPeloId): Promise<Agenda.Horario> | Observable<Agenda.Horario>;
-            excluirHorario(filtro: Common.Input.FiltroPeloId): Promise<Common.SituacaoExclusao> | Observable<Common.SituacaoExclusao>;
-            listarHorarios(filtro: Agenda.Input.FiltroHorarios): Promise<Agenda.Horarios> | Observable<Agenda.Horarios>;
+            marcarHorario(dados: Agenda.Input.MarcarHorario): Common.Resposta<Agenda.Horario>;
+            pegarHorario(filtro: Common.Input.FiltroPeloId): Common.Resposta<Agenda.Horario>;
+            excluirHorario(filtro: Common.Input.FiltroPeloId): Common.Resposta<Common.SituacaoExclusao>;
+            listarHorarios(filtro: Agenda.Input.FiltroHorarios): Common.Resposta<Agenda.Horarios>;
         }
         interface Procedimento {
-            criarProcedimento(dados: Agenda.Input.CriarProcedimento): Promise<Agenda.Procedimento> | Observable<Agenda.Procedimento>;
-            pegarProcedimento(filtro: Common.Input.FiltroPeloId): Promise<Agenda.Procedimento> | Observable<Agenda.Procedimento>;
-            excluirProcedimento(filtro: Common.Input.FiltroPeloId): Promise<Common.SituacaoExclusao> | Observable<Common.SituacaoExclusao>;
-            listarProcedimentos(filtro: Agenda.Input.FiltroProcedimentos): Promise<Agenda.Procedimentos> | Observable<Agenda.Procedimentos>;
+            criarProcedimento(dados: Agenda.Input.CriarProcedimento): Common.Resposta<Agenda.Procedimento>;
+            pegarProcedimento(filtro: Common.Input.FiltroPeloId): Common.Resposta<Agenda.Procedimento>;
+            excluirProcedimento(filtro: Common.Input.FiltroPeloId): Common.Resposta<Common.SituacaoExclusao>;
+            listarProcedimentos(filtro: Agenda.Input.FiltroProcedimentos): Common.Resposta<Agenda.Procedimentos>;
         }
     }
 }

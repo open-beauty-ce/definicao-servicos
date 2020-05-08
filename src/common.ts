@@ -1,4 +1,5 @@
 import {ObjectID} from "./ObjectID";
+import {Observable} from "rxjs";
 
 export namespace Common {
 
@@ -12,6 +13,8 @@ export namespace Common {
   export interface SituacaoExclusao {
     sucesso: boolean;
   }
+  
+  export type Resposta<T> = Promise<T> | Observable<T>;
 
   export namespace Input {
 

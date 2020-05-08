@@ -1,4 +1,5 @@
 import { ObjectID } from "./ObjectID";
+import { Observable } from "rxjs";
 export declare namespace Common {
     interface ListaPaginada<T> {
         pagina: number;
@@ -9,6 +10,7 @@ export declare namespace Common {
     interface SituacaoExclusao {
         sucesso: boolean;
     }
+    type Resposta<T> = Promise<T> | Observable<T>;
     namespace Input {
         type Condicoes = any;
         interface Paginacao {
