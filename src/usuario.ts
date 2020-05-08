@@ -1,4 +1,5 @@
 import {Common} from "./common";
+import {Observable} from "rxjs";
 
 export namespace Usuario {
 
@@ -72,23 +73,23 @@ export namespace Usuario {
 
     export interface Usuario {
 
-      criarUsuario(dados: Usuario.Input.DadosUsuario): Promise<Usuario.Usuario>;
+      criarUsuario(dados: Usuario.Input.DadosUsuario): Promise<Usuario.Usuario> | Observable<Usuario.Usuario>;
 
-      atualizarUsuario(params: Usuario.Input.AtualizarUsuario): Promise<Usuario.Usuario>;
+      atualizarUsuario(params: Usuario.Input.AtualizarUsuario): Promise<Usuario.Usuario> | Observable<Usuario.Usuario>;
 
-      pegarUsuario(filtro: Common.Input.FiltroPeloId): Promise<Usuario.Usuario>;
+      pegarUsuario(filtro: Common.Input.FiltroPeloId): Promise<Usuario.Usuario> | Observable<Usuario.Usuario>;
 
-      listarUsuarios(params: Usuario.Input.FiltroUsuarios): Promise<Usuario.Usuarios>;
+      listarUsuarios(params: Usuario.Input.FiltroUsuarios): Promise<Usuario.Usuarios> | Observable<Usuario.Usuarios>;
 
-      excluirUsuario(filtro: Common.Input.FiltroPeloId): Promise<Common.SituacaoExclusao>;
+      excluirUsuario(filtro: Common.Input.FiltroPeloId): Promise<Common.SituacaoExclusao> | Observable<Common.SituacaoExclusao>;
 
     }
 
     export interface Autenticacao {
 
-      autenticar(dados: Usuario.Input.Autenticacao): Promise<Usuario.Token>;
+      autenticar(dados: Usuario.Input.Autenticacao): Promise<Usuario.Token> | Observable<Usuario.Token>;
 
-      usuarioAutenticado(params: Usuario.Token): Promise<Usuario.Usuario>;
+      usuarioAutenticado(params: Usuario.Token): Promise<Usuario.Usuario> | Observable<Usuario.Usuario>;
 
     }
 
