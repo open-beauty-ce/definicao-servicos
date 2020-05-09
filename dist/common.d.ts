@@ -10,7 +10,7 @@ export declare namespace Common {
     interface SituacaoExclusao {
         sucesso: boolean;
     }
-    type Resposta<T> = Promise<T> | Observable<T>;
+    type Resposta<T> = Promise<T> & Observable<T>;
     namespace Input {
         type Condicoes = any;
         interface Paginacao {

@@ -13,8 +13,8 @@ export namespace Common {
   export interface SituacaoExclusao {
     sucesso: boolean;
   }
-  
-  export type Resposta<T> = Promise<T> | Observable<T>;
+
+  export type Resposta<T> = Promise<T> & Observable<T>;
 
   export namespace Input {
 
