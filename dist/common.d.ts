@@ -10,7 +10,7 @@ export declare namespace Common {
     interface SituacaoExclusao {
         sucesso: boolean;
     }
-    type Resposta<T> = Promise<T> & Observable<T>;
+    type Resposta<T> = Partial<Promise<T> & Observable<T>>;
     enum GrpcStatus {
         OK = 0,
         CANCELLED = 1,

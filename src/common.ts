@@ -14,7 +14,7 @@ export namespace Common {
     sucesso: boolean;
   }
 
-  export type Resposta<T> = Promise<T> & Observable<T>;
+  export type Resposta<T> = Partial<Promise<T> & Observable<T>>;
 
   export enum GrpcStatus {
     OK,
