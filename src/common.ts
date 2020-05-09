@@ -16,6 +16,26 @@ export namespace Common {
 
   export type Resposta<T> = Promise<T> & Observable<T>;
 
+  export enum GrpcStatus {
+    OK,
+    CANCELLED,
+    UNKNOWN,
+    INVALID_ARGUMENT,
+    DEADLINE_EXCEEDED,
+    NOT_FOUND,
+    ALREADY_EXISTS,
+    PERMISSION_DENIED,
+    RESOURCE_EXHAUSTED,
+    FAILED_PRECONDITION,
+    ABORTED,
+    OUT_OF_RANGE,
+    UNIMPLEMENTED,
+    INTERNAL,
+    UNAVAILABLE,
+    DATA_LOSS,
+    UNAUTHENTICATED
+  }
+
   export namespace Input {
 
     export type Condicoes = any;
