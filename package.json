@@ -1,6 +1,6 @@
 {
   "name": "definicao-servicos",
-  "version": "1.0.18",
+  "version": "1.1.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": "git@github.com:open-beauty-ce/definicao-servicos.git",
@@ -14,6 +14,9 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
+    "@nestjs/common": "^7.0.9",
+    "@nestjs/core": "^7.0.9",
+    "@nestjs/microservices": "^7.0.9",
     "@types/bson": "^4.0.2",
     "@types/rx": "^4.1.1",
     "rxjs": "^6.5.5"
