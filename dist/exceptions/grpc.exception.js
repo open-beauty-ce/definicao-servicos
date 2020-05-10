@@ -17,9 +17,14 @@ var microservices_1 = require("@nestjs/microservices");
 var GrpcException = /** @class */ (function (_super) {
     __extends(GrpcException, _super);
     function GrpcException(code, message) {
-        return _super.call(this, { code: code, message: message }) || this;
+        var _this = _super.call(this, message) || this;
+        _this.rpcException = new microservices_1.RpcException({ code: code, message: message });
+        return _this;
     }
+    GrpcException.prototype.getError = function () {
+        return this.rpcException.getError();
+    };
     return GrpcException;
-}(microservices_1.RpcException));
+}(Error));
 exports.GrpcException = GrpcException;
 //# sourceMappingURL=grpc.exception.js.map

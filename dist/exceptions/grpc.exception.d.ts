@@ -1,5 +1,6 @@
-import { RpcException } from "@nestjs/microservices";
 import { Common } from "../common";
-export declare class GrpcException extends RpcException {
+export declare class GrpcException extends Error {
+    private rpcException;
     constructor(code: Common.GrpcStatus, message: string);
+    getError(): object;
 }
