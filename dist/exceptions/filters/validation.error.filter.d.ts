@@ -1,6 +1,7 @@
-import { ArgumentsHost, ExceptionFilter } from "@nestjs/common";
+import { RpcExceptionFilter } from "@nestjs/common";
 import { Error } from "mongoose";
+import { Observable } from "rxjs";
 import ValidationError = Error.ValidationError;
-export declare class ValidationErrorFilter implements ExceptionFilter<ValidationError> {
-    catch(exception: ValidationError, host: ArgumentsHost): any;
+export declare class ValidationErrorFilter implements RpcExceptionFilter {
+    catch(exception: ValidationError): Observable<any>;
 }
