@@ -4,4 +4,5 @@ function __export(m) {
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./grpc.exception.filter"));
+__export(require("./validation.error.filter"));
 //# sourceMappingURL=index.js.map
