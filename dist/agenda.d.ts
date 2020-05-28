@@ -30,11 +30,13 @@ export declare namespace Agenda {
             datas: Array<Date | number>;
             doutor: Doutor;
         }
+        type MarcarHorarioAssinado = Common.Input.DadosAssinados<MarcarHorario>;
         interface CriarProcedimento {
             nome: string;
             duracao: number;
             doutor: Doutor;
         }
+        type CriarProcedimentoAssinado = Common.Input.DadosAssinados<CriarProcedimento>;
         type FiltroHorarios = Common.Input.Filtro<Partial<{
             id: Common.Input.Condicoes;
             data: Common.Input.Condicoes;
@@ -47,6 +49,7 @@ export declare namespace Agenda {
             id: Common.Input.Ordem;
             data: Common.Input.Ordem;
         }>>;
+        type FiltroHorariosAssinado = Common.Input.FiltroAssinado<FiltroHorarios>;
         type FiltroProcedimentos = Common.Input.Filtro<Partial<{
             id: Common.Input.Condicoes;
             nome: Common.Input.Condicoes;
@@ -60,19 +63,20 @@ export declare namespace Agenda {
             nome: Common.Input.Ordem;
             duracao: Common.Input.Ordem;
         }>>;
+        type FiltroProcedimentosAssinado = Common.Input.FiltroAssinado<FiltroProcedimentos>;
     }
     namespace Controller {
         interface Horario {
-            marcarHorario(dados: Agenda.Input.MarcarHorario): Common.Resposta<Agenda.Horario>;
-            pegarHorario(filtro: Common.Input.FiltroPeloId): Common.Resposta<Agenda.Horario>;
-            excluirHorario(filtro: Common.Input.FiltroPeloId): Common.Resposta<Common.SituacaoExclusao>;
-            listarHorarios(filtro: Agenda.Input.FiltroHorarios): Common.Resposta<Agenda.Horarios>;
+            marcarHorario(dados: Agenda.Input.MarcarHorarioAssinado): Common.Resposta<Agenda.Horario>;
+            pegarHorario(filtro: Common.Input.FiltroPeloIdAssinado): Common.Resposta<Agenda.Horario>;
+            excluirHorario(filtro: Common.Input.FiltroPeloIdAssinado): Common.Resposta<Common.SituacaoExclusao>;
+            listarHorarios(filtro: Agenda.Input.FiltroHorariosAssinado): Common.Resposta<Agenda.Horarios>;
         }
         interface Procedimento {
-            criarProcedimento(dados: Agenda.Input.CriarProcedimento): Common.Resposta<Agenda.Procedimento>;
-            pegarProcedimento(filtro: Common.Input.FiltroPeloId): Common.Resposta<Agenda.Procedimento>;
-            excluirProcedimento(filtro: Common.Input.FiltroPeloId): Common.Resposta<Common.SituacaoExclusao>;
-            listarProcedimentos(filtro: Agenda.Input.FiltroProcedimentos): Common.Resposta<Agenda.Procedimentos>;
+            criarProcedimento(dados: Agenda.Input.CriarProcedimentoAssinado): Common.Resposta<Agenda.Procedimento>;
+            pegarProcedimento(filtro: Common.Input.FiltroPeloIdAssinado): Common.Resposta<Agenda.Procedimento>;
+            excluirProcedimento(filtro: Common.Input.FiltroPeloIdAssinado): Common.Resposta<Common.SituacaoExclusao>;
+            listarProcedimentos(filtro: Agenda.Input.FiltroProcedimentosAssinado): Common.Resposta<Agenda.Procedimentos>;
         }
     }
 }

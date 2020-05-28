@@ -49,14 +49,29 @@ message MarcarHorarioInput {
     Doutor doutor = 3;
 }
 
+message MarcarHorarioAssinado {
+    MarcarHorarioInput dados = 1;
+    string token = 2;
+}
+
 message CriarProcedimentoInput {
     string nome = 1;
     int32 duracao = 2;
     Doutor doutor = 3;
 }
 
+message CriarProcedimentoAssinado {
+    CriarProcedimentoInput dados = 1;
+    string token = 2;
+}
+
 message FiltroPeloIdInput {
     string id = 1;
+}
+
+message FiltroPeloIdAssinado {
+    FiltroPeloIdInput filtro = 1;
+    string token = 2;
 }
 
 message SituacaoExclusao {
@@ -92,6 +107,11 @@ message FiltroHorariosInput {
     PaginacaoInput paginacao = 3;
 }
 
+message FiltroHorariosAssinado {
+    FiltroHorariosInput filtro = 1;
+    string token = 2;
+}
+
 message FiltroProcedimentosInput {
     message FiltroInput {
         google.protobuf.Any id = 1;
@@ -111,16 +131,21 @@ message FiltroProcedimentosInput {
     PaginacaoInput paginacao = 3;
 }
 
+message FiltroProcedimentosAssinado {
+    FiltroProcedimentosInput filtro = 1;
+    string token = 2;
+}
+
 service HorarioController {
-    rpc marcarHorario(MarcarHorarioInput) returns (Horario);
-    rpc pegarHorario(FiltroPeloIdInput) returns (Horario);
-    rpc excluirHorario(FiltroPeloIdInput) returns (SituacaoExclusao);
-    rpc listarHorarios(FiltroHorariosInput) returns (Horarios);
+    rpc marcarHorario(MarcarHorarioAssinado) returns (Horario);
+    rpc pegarHorario(FiltroPeloIdAssinado) returns (Horario);
+    rpc excluirHorario(FiltroPeloIdAssinado) returns (SituacaoExclusao);
+    rpc listarHorarios(FiltroHorariosAssinado) returns (Horarios);
 }
 
 service ProcedimentoController {
-    rpc criarProcedimento(CriarProcedimentoInput) returns (Procedimento);
-    rpc excluirProcedimento(FiltroPeloIdInput) returns (SituacaoExclusao);
-    rpc pegarProcedimento(FiltroPeloIdInput) returns (Procedimento);
-    rpc listarProcedimentos(FiltroProcedimentosInput) returns (Procedimentos);
+    rpc criarProcedimento(CriarProcedimentoAssinado) returns (Procedimento);
+    rpc excluirProcedimento(FiltroPeloIdAssinado) returns (SituacaoExclusao);
+    rpc pegarProcedimento(FiltroPeloIdAssinado) returns (Procedimento);
+    rpc listarProcedimentos(FiltroProcedimentosAssinado) returns (Procedimentos);
 }
