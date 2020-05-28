@@ -44,6 +44,11 @@ message FiltroPeloIdInput {
   string id = 1;
 }
 
+message FiltroPeloIdAssinado {
+  FiltroPeloIdInput filtro = 1;
+  string token = 2;
+}
+
 message FiltroUsuariosInput {
   message FiltroInput {
     google.protobuf.Any id = 1;
@@ -65,6 +70,11 @@ message FiltroUsuariosInput {
   PaginacaoInput paginacao = 3;
 }
 
+message FiltroUsuariosAssinado {
+  FiltroUsuariosInput filtro = 1;
+  string token = 2;
+}
+
 message DadosContatoInput {
   string telefone = 1;
   bool whatsapp = 2;
@@ -78,9 +88,19 @@ message DadosUsuarioInput {
   repeated DadosContatoInput contatos = 5;
 }
 
+message DadosUsuarioAssinados {
+  DadosUsuarioInput dados = 1;
+  string token = 2;
+}
+
 message AtualizarUsuarioInput {
   FiltroPeloIdInput filtro = 1;
   DadosUsuarioInput dados = 2;
+}
+
+message AtualizarUsuarioAssinado {
+  AtualizarUsuarioInput atualizacao = 1;
+  string token = 2;
 }
 
 message AutenticacaoInput {
@@ -93,11 +113,11 @@ message Token {
 }
 
 service UsuarioController {
-  rpc criarUsuario(DadosUsuarioInput) returns(Usuario);
-  rpc atualizarUsuario(AtualizarUsuarioInput) returns(Usuario);
-  rpc pegarUsuario(FiltroPeloIdInput) returns(Usuario);
-  rpc listarUsuarios(FiltroUsuariosInput) returns(Usuarios);
-  rpc excluirUsuario(FiltroPeloIdInput) returns(SituacaoExclusao);
+  rpc criarUsuario(DadosUsuarioAssinados) returns(Usuario);
+  rpc atualizarUsuario(AtualizarUsuarioAssinado) returns(Usuario);
+  rpc pegarUsuario(FiltroPeloIdAssinado) returns(Usuario);
+  rpc listarUsuarios(FiltroUsuariosAssinado) returns(Usuarios);
+  rpc excluirUsuario(FiltroPeloIdAssinado) returns(SituacaoExclusao);
 }
 
 service AutenticacaoController {

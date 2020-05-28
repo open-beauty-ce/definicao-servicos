@@ -57,9 +57,26 @@ export namespace Common {
       paginacao?: Paginacao;
     }
 
+    export interface FiltroAssinado<T> {
+      filtro: T;
+      token: string;
+    }
+
+    export interface DadosAssinados<T> {
+      dados: T;
+      token: string;
+    }
+
+    export interface AtualizacaoAssinada<T> {
+      atualizacao: T;
+      token: string;
+    }
+
     export type FiltroPeloId = {
       id: ObjectID;
     }
+
+    export type FiltroPeloIdAssinado = FiltroAssinado<FiltroPeloId>
 
   }
 

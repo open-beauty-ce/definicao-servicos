@@ -32,12 +32,16 @@ export namespace Usuario {
       contatos: Omit<Contato, 'id'>[];
     }
 
+    export type DadosUsuarioAssinados = Common.Input.DadosAssinados<DadosUsuario>
+
     export type DadosAtualizarUsuario = Omit<Usuario.Input.DadosUsuario, 'contatos'> & { contatos: Contato[] }
 
     export interface AtualizarUsuario {
       filtro: Common.Input.FiltroPeloId;
       dados: Partial<DadosAtualizarUsuario>;
     }
+
+    export type AtualizarUsuarioAssinado = Common.Input.AtualizacaoAssinada<AtualizarUsuario>
 
     export interface Autenticacao {
       email: string;
@@ -66,21 +70,23 @@ export namespace Usuario {
       }
     }>>
 
+    export type FiltroUsuariosAssinado = Common.Input.FiltroAssinado<FiltroUsuarios>
+
   }
 
   export namespace Controller {
 
     export interface Usuario {
 
-      criarUsuario(dados: Usuario.Input.DadosUsuario): Common.Resposta<Usuario.Usuario>;
+      criarUsuario(dados: Usuario.Input.DadosUsuarioAssinados): Common.Resposta<Usuario.Usuario>;
 
-      atualizarUsuario(params: Usuario.Input.AtualizarUsuario): Common.Resposta<Usuario.Usuario>;
+      atualizarUsuario(params: Usuario.Input.AtualizarUsuarioAssinado): Common.Resposta<Usuario.Usuario>;
 
-      pegarUsuario(filtro: Common.Input.FiltroPeloId): Common.Resposta<Usuario.Usuario>;
+      pegarUsuario(filtro: Common.Input.FiltroPeloIdAssinado): Common.Resposta<Usuario.Usuario>;
 
-      listarUsuarios(params: Usuario.Input.FiltroUsuarios): Common.Resposta<Usuario.Usuarios>;
+      listarUsuarios(params: Usuario.Input.FiltroUsuariosAssinado): Common.Resposta<Usuario.Usuarios>;
 
-      excluirUsuario(filtro: Common.Input.FiltroPeloId): Common.Resposta<Common.SituacaoExclusao>;
+      excluirUsuario(filtro: Common.Input.FiltroPeloIdAssinado): Common.Resposta<Common.SituacaoExclusao>;
 
     }
 
