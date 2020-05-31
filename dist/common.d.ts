@@ -1,5 +1,6 @@
 import { ObjectID } from "./ObjectID";
 import { Observable } from "rxjs";
+import { Metadata as GrpcMetadata } from 'grpc';
 export declare namespace Common {
     interface ListaPaginada<T> {
         pagina: number;
@@ -46,21 +47,9 @@ export declare namespace Common {
             ordenacao?: O;
             paginacao?: Paginacao;
         }
-        interface FiltroAssinado<T> {
-            filtro: T;
-            token: string;
-        }
-        interface DadosAssinados<T> {
-            dados: T;
-            token: string;
-        }
-        interface AtualizacaoAssinada<T> {
-            atualizacao: T;
-            token: string;
-        }
         type FiltroPeloId = {
             id: ObjectID;
         };
-        type FiltroPeloIdAssinado = FiltroAssinado<FiltroPeloId>;
+        type Metadata = GrpcMetadata | object;
     }
 }

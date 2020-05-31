@@ -24,7 +24,6 @@ export declare namespace Usuario {
             funcao: string;
             contatos: Omit<Contato, 'id'>[];
         }
-        type DadosUsuarioAssinados = Common.Input.DadosAssinados<DadosUsuario>;
         type DadosAtualizarUsuario = Omit<Usuario.Input.DadosUsuario, 'contatos'> & {
             contatos: Contato[];
         };
@@ -32,7 +31,6 @@ export declare namespace Usuario {
             filtro: Common.Input.FiltroPeloId;
             dados: Partial<DadosAtualizarUsuario>;
         }
-        type AtualizarUsuarioAssinado = Common.Input.AtualizacaoAssinada<AtualizarUsuario>;
         interface Autenticacao {
             email: string;
             senha: string;
@@ -58,15 +56,14 @@ export declare namespace Usuario {
                 whatsapp: Common.Input.Ordem;
             };
         }>>;
-        type FiltroUsuariosAssinado = Common.Input.FiltroAssinado<FiltroUsuarios>;
     }
     namespace Controller {
         interface Usuario {
-            criarUsuario(dados: Usuario.Input.DadosUsuarioAssinados): Common.Resposta<Usuario.Usuario>;
-            atualizarUsuario(params: Usuario.Input.AtualizarUsuarioAssinado): Common.Resposta<Usuario.Usuario>;
-            pegarUsuario(filtro: Common.Input.FiltroPeloIdAssinado): Common.Resposta<Usuario.Usuario>;
-            listarUsuarios(params: Usuario.Input.FiltroUsuariosAssinado): Common.Resposta<Usuario.Usuarios>;
-            excluirUsuario(filtro: Common.Input.FiltroPeloIdAssinado): Common.Resposta<Common.SituacaoExclusao>;
+            criarUsuario(dados: Usuario.Input.DadosUsuario, metadata: Common.Input.Metadata): Common.Resposta<Usuario.Usuario>;
+            atualizarUsuario(params: Usuario.Input.AtualizarUsuario, metadata: Common.Input.Metadata): Common.Resposta<Usuario.Usuario>;
+            pegarUsuario(filtro: Common.Input.FiltroPeloId, metadata: Common.Input.Metadata): Common.Resposta<Usuario.Usuario>;
+            listarUsuarios(params: Usuario.Input.FiltroUsuarios, metadata: Common.Input.Metadata): Common.Resposta<Usuario.Usuarios>;
+            excluirUsuario(filtro: Common.Input.FiltroPeloId, metadata: Common.Input.Metadata): Common.Resposta<Common.SituacaoExclusao>;
         }
         interface Autenticacao {
             autenticar(dados: Usuario.Input.Autenticacao): Common.Resposta<Usuario.Token>;

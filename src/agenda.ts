@@ -40,15 +40,11 @@ export namespace Agenda {
       doutor: Doutor;
     }
 
-    export type MarcarHorarioAssinado = Common.Input.DadosAssinados<MarcarHorario>
-
     export interface CriarProcedimento {
       nome: string;
       duracao: number;
       doutor: Doutor;
     }
-
-    export type CriarProcedimentoAssinado = Common.Input.DadosAssinados<CriarProcedimento>
 
     export type FiltroHorarios = Common.Input.Filtro<Partial<{
       id: Common.Input.Condicoes;
@@ -62,8 +58,6 @@ export namespace Agenda {
       id: Common.Input.Ordem;
       data: Common.Input.Ordem;
     }>>
-
-    export type FiltroHorariosAssinado = Common.Input.FiltroAssinado<FiltroHorarios>
 
     export type FiltroProcedimentos = Common.Input.Filtro<Partial<{
       id: Common.Input.Condicoes;
@@ -79,33 +73,31 @@ export namespace Agenda {
       duracao: Common.Input.Ordem;
     }>>
 
-    export type FiltroProcedimentosAssinado = Common.Input.FiltroAssinado<FiltroProcedimentos>
-
   }
 
   export namespace Controller {
 
     export interface Horario {
 
-      marcarHorario(dados: Agenda.Input.MarcarHorarioAssinado): Common.Resposta<Agenda.Horario>;
+      marcarHorario(dados: Agenda.Input.MarcarHorario, metadata: Common.Input.Metadata): Common.Resposta<Agenda.Horario>;
 
-      pegarHorario(filtro: Common.Input.FiltroPeloIdAssinado): Common.Resposta<Agenda.Horario>;
+      pegarHorario(filtro: Common.Input.FiltroPeloId, metadata: Common.Input.Metadata): Common.Resposta<Agenda.Horario>;
 
-      excluirHorario(filtro: Common.Input.FiltroPeloIdAssinado): Common.Resposta<Common.SituacaoExclusao>;
+      excluirHorario(filtro: Common.Input.FiltroPeloId, metadata: Common.Input.Metadata): Common.Resposta<Common.SituacaoExclusao>;
 
-      listarHorarios(filtro: Agenda.Input.FiltroHorariosAssinado): Common.Resposta<Agenda.Horarios>;
+      listarHorarios(filtro: Agenda.Input.FiltroHorarios, metadata: Common.Input.Metadata): Common.Resposta<Agenda.Horarios>;
 
     }
 
     export interface Procedimento {
 
-      criarProcedimento(dados: Agenda.Input.CriarProcedimentoAssinado): Common.Resposta<Agenda.Procedimento>;
+      criarProcedimento(dados: Agenda.Input.CriarProcedimento, metadata: Common.Input.Metadata): Common.Resposta<Agenda.Procedimento>;
 
-      pegarProcedimento(filtro: Common.Input.FiltroPeloIdAssinado): Common.Resposta<Agenda.Procedimento>;
+      pegarProcedimento(filtro: Common.Input.FiltroPeloId, metadata: Common.Input.Metadata): Common.Resposta<Agenda.Procedimento>;
 
-      excluirProcedimento(filtro: Common.Input.FiltroPeloIdAssinado): Common.Resposta<Common.SituacaoExclusao>;
+      excluirProcedimento(filtro: Common.Input.FiltroPeloId, metadata: Common.Input.Metadata): Common.Resposta<Common.SituacaoExclusao>;
 
-      listarProcedimentos(filtro: Agenda.Input.FiltroProcedimentosAssinado): Common.Resposta<Agenda.Procedimentos>;
+      listarProcedimentos(filtro: Agenda.Input.FiltroProcedimentos, metadata: Common.Input.Metadata): Common.Resposta<Agenda.Procedimentos>;
 
     }
 
