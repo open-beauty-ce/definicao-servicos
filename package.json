@@ -1,6 +1,6 @@
 {
   "name": "definicao-servicos",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": "git@github.com:open-beauty-ce/definicao-servicos.git",
@@ -21,6 +21,7 @@
     "@types/mongoose": "^5.7.16",
     "@types/rx": "^4.1.1",
     "grpc": "^1.24.2",
+    "mongoose": "^5.9.16",
     "rxjs": "^6.5.5"
   },
   "husky": {
