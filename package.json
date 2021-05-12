@@ -20,7 +20,7 @@
     "@types/bson": "^4.0.2",
     "@types/mongoose": "5.7.14",
     "@types/rx": "^4.1.1",
-    "grpc": "^1.24.2",
+    "grpc": "^1.24.9",
     "mongoose": "^5.9.16",
     "rxjs": "^6.5.5"
   },
