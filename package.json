@@ -21,7 +21,7 @@
     "@types/mongoose": "5.7.14",
     "@types/rx": "^4.1.1",
     "grpc": "^1.24.2",
-    "mongoose": "^5.9.16",
+    "mongoose": "^5.13.15",
     "rxjs": "^6.5.5"
   },
   "husky": {
